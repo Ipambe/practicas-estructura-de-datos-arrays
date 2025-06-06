@@ -1,0 +1,8 @@
+{
+  "name": "estructura_de_datos",
+  "author": "Rafael Adolfo Rosa",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.15.24"
+  }
+}
