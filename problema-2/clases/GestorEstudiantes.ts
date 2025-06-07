@@ -52,7 +52,7 @@ class GestorEstudiantes {
     console.log('4. Eliminar estudiante')
     console.log('5. Mostrar todos los estudiantes')
     console.log('6. Salir')
-    const opcion = await rl.question('Elige una opción: ')
+    const opcion = await rl.question('\nElige una opción: ')
     this.procesarOpcion(opcion)
   }
 
@@ -97,24 +97,35 @@ class GestorEstudiantes {
 
         const editarEstudiante: Partial<Omit<Estudiante, 'matricula'>> = {}
 
-        editarEstudiante.nombre = await rl.question(
+        const nombre = await rl.question(
           `Ingrese nuevo nombre o presione Enter para omitir (actual: ${estudiante.nombre}): `
         )
-        editarEstudiante.apellido = await rl.question(
+        if (nombre.trim() !== '') editarEstudiante.nombre = nombre
+
+        const apellido = await rl.question(
           `Ingrese nuevo apellido o presione Enter para omitir (actual: ${estudiante.apellido}): `
         )
-        editarEstudiante.telefono = await rl.question(
+        if (apellido.trim() !== '') editarEstudiante.apellido = apellido
+
+        const telefono = await rl.question(
           `Ingrese nuevo teléfono o presione Enter para omitir (actual: ${estudiante.telefono}): `
         )
-        editarEstudiante.correo = await rl.question(
+        if (telefono.trim() !== '') editarEstudiante.telefono = telefono
+
+        const correo = await rl.question(
           `Ingrese nuevo correo o presione Enter para omitir (actual: ${estudiante.correo}): `
         )
-        editarEstudiante.carrera = await rl.question(
+        if (correo.trim() !== '') editarEstudiante.correo = correo
+
+        const carrera = await rl.question(
           `Ingrese nueva carrera o presione Enter para omitir (actual: ${estudiante.carrera}): `
         )
-        editarEstudiante.grado = await rl.question(
+        if (carrera.trim() !== '') editarEstudiante.carrera = carrera
+
+        const grado = await rl.question(
           `Ingrese nuevo grado o presione Enter para omitir (actual: ${estudiante.grado}): `
         )
+        if (grado.trim() !== '') editarEstudiante.grado = grado
 
         const modificado = this.modificar(matricula, editarEstudiante)
         if (modificado) {
@@ -126,6 +137,7 @@ class GestorEstudiantes {
         }
         break
       }
+
       case '4': {
         const matricula = await rl.question('Ingrese matrícula a eliminar: ')
         const eliminado = this.eliminar(matricula)

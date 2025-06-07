@@ -20,7 +20,7 @@ class Juego {
     console.log('3. Mostrar baraja')
     console.log('4. Reiniciar baraja')
     console.log('5. Salir')
-    rl.question('Elige una opción: ', (opcion: string) => {
+    rl.question('\nElige una opción: ', (opcion: string) => {
       this.procesarOpcion(opcion)
     })
   }
